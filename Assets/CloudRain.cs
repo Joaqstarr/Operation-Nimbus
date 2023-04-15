@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CloudRain : MonoBehaviour
 {
+    [SerializeField]
+    float _damage = 2;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,7 +21,15 @@ public class CloudRain : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            Destroy(other.gameObject);
+           // Destroy(other.gameObject);
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            other.GetComponent<EnemyHealth>()._health -= Time.deltaTime * _damage;
         }
     }
 }

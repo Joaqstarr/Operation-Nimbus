@@ -10,16 +10,38 @@ public class Health : MonoBehaviour
     void Start()
     {
         tubes = GetComponentsInChildren<TubeScript>();
+        _hp = tubes.Length;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        int progHealth = 0;
+        foreach(TubeScript tube in tubes)
+        {
+            if(tube._broken == false)
+            {
+                progHealth++;
+            }
+        }
+        _hp = progHealth;
     }
     public void Damage()
     {
-        tubes[Mathf.Abs(_hp - 3)].BreakTube();
-        _hp = _hp - 1;
+        bool isPicked = false;
+        TubeScript pickedTube = null;
+        while (!isPicked)
+        {
+
+            int ranPipe = Random.Range(0, tubes.Length - 1);
+            if (tubes[ranPipe]._broken == false)
+            {
+                pickedTube = tubes[ranPipe];
+                isPicked = true;
+            }
+        }
+
+        pickedTube.BreakTube();
+        
     }
 }

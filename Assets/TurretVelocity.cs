@@ -23,7 +23,7 @@ public class TurretVelocity : MonoBehaviour
     }
     public void OnGrabCrank()
     {
-        _rb.constraints = RigidbodyConstraints.None | RigidbodyConstraints.FreezePosition;
+        _rb.constraints = RigidbodyConstraints.None | RigidbodyConstraints.FreezePosition | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
 
     }
     public void OnLetGo()

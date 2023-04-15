@@ -675,7 +675,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 96
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!114 &506985518
 MonoBehaviour:
@@ -1971,7 +1971,7 @@ MonoBehaviour:
   WorldDepthResolutionDivider: 2
   DepthPrecision: 5
   LateCut: 1
-  BlurRadius: 10
+  BlurRadius: 0.4
   BlurQuality: 10
   LateCutThreshohld: 0
   LateCutPower: 1.5
@@ -2083,7 +2083,7 @@ MonoBehaviour:
   m_SelectEntered:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 435476872}
+      - m_Target: {fileID: 506985518}
         m_TargetAssemblyTypeName: TurretVelocity, Assembly-CSharp
         m_MethodName: OnGrabCrank
         m_Mode: 1
@@ -2098,9 +2098,9 @@ MonoBehaviour:
   m_SelectExited:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 435476872}
-        m_TargetAssemblyTypeName: TurretVelocity, Assembly-CSharp
-        m_MethodName: OnLetGo
+      - m_Target: {fileID: 506985519}
+        m_TargetAssemblyTypeName: Crank, Assembly-CSharp
+        m_MethodName: ResetSpun
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2110,9 +2110,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 435476873}
-        m_TargetAssemblyTypeName: Crank, Assembly-CSharp
-        m_MethodName: ResetSpun
+      - m_Target: {fileID: 506985518}
+        m_TargetAssemblyTypeName: TurretVelocity, Assembly-CSharp
+        m_MethodName: OnLetGo
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2165,7 +2165,7 @@ MonoBehaviour:
   m_AttachEaseInTime: 0.15
   m_MovementType: 0
   m_VelocityDamping: 1
-  m_VelocityScale: 1
+  m_VelocityScale: 0.16
   m_AngularVelocityDamping: 1
   m_AngularVelocityScale: 1
   m_TrackPosition: 1

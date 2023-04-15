@@ -21,8 +21,8 @@ public class Crank : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _distanceSpun = _rb.angularVelocity.x * Time.deltaTime * _speed;
-
+        _distanceSpun = _rb.angularVelocity.x * _speed;
+        
     }
 
     public void ResetSpun()

@@ -10,23 +10,19 @@ public class Crank : MonoBehaviour
     float _speed = 0.01f;
     float lastRot;
     public float _distanceSpun = 0;
+    bool _flop = true;
+    Rigidbody _rb;
     // Start is called before the first frame update
     void Start()
     {
-        
+        _rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        float angle = transform.eulerAngles.x - lastRot;
-        Debug.Log(transform.eulerAngles.x);
+        _distanceSpun = _rb.angularVelocity.x * Time.deltaTime * _speed;
 
-        if (angle > 180) angle -= 360;
-        if (angle < -180) angle += 360;
-        _deltaRot = angle;
-        _distanceSpun += _deltaRot * _speed * Time.deltaTime;
-        lastRot = transform.eulerAngles.x;
     }
 
     public void ResetSpun()

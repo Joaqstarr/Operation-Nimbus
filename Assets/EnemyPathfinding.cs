@@ -17,7 +17,7 @@ public class EnemyPathfinding : MonoBehaviour
     private void Start()
     {
 
-
+        _target = GameObject.Find("Fueselage");
         rb = GetComponent<Rigidbody>();
     }
     private void FixedUpdate()

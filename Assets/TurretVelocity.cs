@@ -21,7 +21,11 @@ public class TurretVelocity : MonoBehaviour
         _rb.constraints = RigidbodyConstraints.None;
 
     }
+    public void OnGrabCrank()
+    {
+        _rb.constraints = RigidbodyConstraints.None | RigidbodyConstraints.FreezePosition;
 
+    }
     public void OnLetGo()
     {
         _rb.angularVelocity = Vector3.zero;

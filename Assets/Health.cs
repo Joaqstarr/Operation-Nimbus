@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Health : MonoBehaviour
 {
     public static int _hp = 3;
     TubeScript[] tubes;
+
+    [SerializeField]
+    UnityEvent _onHit;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +32,8 @@ public class Health : MonoBehaviour
     }
     public void Damage()
     {
+        _onHit.Invoke();
+        if (_hp <= 0) return;
         bool isPicked = false;
         TubeScript pickedTube = null;
         while (!isPicked)

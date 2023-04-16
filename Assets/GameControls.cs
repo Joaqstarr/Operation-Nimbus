@@ -178,6 +178,15 @@ public partial class @GameControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Haptics"",
+                    ""type"": ""Value"",
+                    ""id"": ""205d49a8-447a-4de1-908d-59e2e9400b77"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -224,6 +233,17 @@ public partial class @GameControls : IInputActionCollection2, IDisposable
                     ""action"": ""Rotation"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""77eedcdf-741f-416c-8366-483648b67cd6"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Haptics"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -245,6 +265,7 @@ public partial class @GameControls : IInputActionCollection2, IDisposable
         m_RightController_Rotation = m_RightController.FindAction("Rotation", throwIfNotFound: true);
         m_RightController_TrackingState = m_RightController.FindAction("TrackingState", throwIfNotFound: true);
         m_RightController_SelectAction = m_RightController.FindAction("Select Action", throwIfNotFound: true);
+        m_RightController_Haptics = m_RightController.FindAction("Haptics", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -398,6 +419,7 @@ public partial class @GameControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_RightController_Rotation;
     private readonly InputAction m_RightController_TrackingState;
     private readonly InputAction m_RightController_SelectAction;
+    private readonly InputAction m_RightController_Haptics;
     public struct RightControllerActions
     {
         private @GameControls m_Wrapper;
@@ -406,6 +428,7 @@ public partial class @GameControls : IInputActionCollection2, IDisposable
         public InputAction @Rotation => m_Wrapper.m_RightController_Rotation;
         public InputAction @TrackingState => m_Wrapper.m_RightController_TrackingState;
         public InputAction @SelectAction => m_Wrapper.m_RightController_SelectAction;
+        public InputAction @Haptics => m_Wrapper.m_RightController_Haptics;
         public InputActionMap Get() { return m_Wrapper.m_RightController; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -427,6 +450,9 @@ public partial class @GameControls : IInputActionCollection2, IDisposable
                 @SelectAction.started -= m_Wrapper.m_RightControllerActionsCallbackInterface.OnSelectAction;
                 @SelectAction.performed -= m_Wrapper.m_RightControllerActionsCallbackInterface.OnSelectAction;
                 @SelectAction.canceled -= m_Wrapper.m_RightControllerActionsCallbackInterface.OnSelectAction;
+                @Haptics.started -= m_Wrapper.m_RightControllerActionsCallbackInterface.OnHaptics;
+                @Haptics.performed -= m_Wrapper.m_RightControllerActionsCallbackInterface.OnHaptics;
+                @Haptics.canceled -= m_Wrapper.m_RightControllerActionsCallbackInterface.OnHaptics;
             }
             m_Wrapper.m_RightControllerActionsCallbackInterface = instance;
             if (instance != null)
@@ -443,6 +469,9 @@ public partial class @GameControls : IInputActionCollection2, IDisposable
                 @SelectAction.started += instance.OnSelectAction;
                 @SelectAction.performed += instance.OnSelectAction;
                 @SelectAction.canceled += instance.OnSelectAction;
+                @Haptics.started += instance.OnHaptics;
+                @Haptics.performed += instance.OnHaptics;
+                @Haptics.canceled += instance.OnHaptics;
             }
         }
     }
@@ -464,5 +493,6 @@ public partial class @GameControls : IInputActionCollection2, IDisposable
         void OnRotation(InputAction.CallbackContext context);
         void OnTrackingState(InputAction.CallbackContext context);
         void OnSelectAction(InputAction.CallbackContext context);
+        void OnHaptics(InputAction.CallbackContext context);
     }
 }

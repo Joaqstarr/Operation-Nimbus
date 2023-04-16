@@ -6,7 +6,10 @@ using UnityEngine.Events;
 public class Health : MonoBehaviour
 {
     public static int _hp = 3;
+    [SerializeField]
     TubeScript[] tubes;
+    public delegate void  PlayerDied();
+    public static PlayerDied playerDied;
 
     [SerializeField]
     UnityEvent _onHit;
@@ -33,13 +36,17 @@ public class Health : MonoBehaviour
     public void Damage()
     {
         _onHit.Invoke();
-        if (_hp <= 0) return;
+        if (_hp <= 0)
+        {
+            playerDied();
+            return;
+        };
         bool isPicked = false;
         TubeScript pickedTube = null;
         while (!isPicked)
         {
 
-            int ranPipe = Random.Range(0, tubes.Length - 1);
+            int ranPipe = Random.Range(0, tubes.Length );
             if (tubes[ranPipe]._broken == false)
             {
                 pickedTube = tubes[ranPipe];

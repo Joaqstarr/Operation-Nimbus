@@ -22,7 +22,7 @@ public class Fueselage : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             if (collision.gameObject.GetComponent<EnemyHealth>()._health <= 0) return;
-            Destroy(collision.gameObject);
+            collision.gameObject.GetComponent<EnemyHealth>().Explode();
             _playerHealth.Damage();
         }
     }

@@ -9,12 +9,21 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField]
     ParticleSystem[] _systems;
     float _maxHealth;
+    [SerializeField]
+    ParticleSystem _explosion;
+    [SerializeField]
+    AudioSource _explodeSound;
     // Start is called before the first frame update
     void Start()
     {
         _maxHealth = _health;
     }
-
+    public void Explode()
+    {
+        _explosion.Play();
+        _explodeSound.Play();
+        Destroy(gameObject, 1f);
+    }
     // Update is called once per frame
     void Update()
     {

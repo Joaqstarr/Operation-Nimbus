@@ -12,6 +12,8 @@ public class CloudDistance : MonoBehaviour
     Crank _crank;
     [SerializeField]
     float _speed = 10;
+
+    public float _distanceRatio = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,5 +24,6 @@ public class CloudDistance : MonoBehaviour
     void Update()
     {
         transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, Mathf.Clamp(transform.localPosition.z + (_crank._distanceSpun * Time.deltaTime * _speed), _minDistance, _maxDistance));
+        _distanceRatio = (transform.localPosition.z - _minDistance) / (_maxDistance - _minDistance);
     }
 }

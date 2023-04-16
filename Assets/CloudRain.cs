@@ -29,7 +29,12 @@ public class CloudRain : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            other.GetComponent<EnemyHealth>()._health -= Time.deltaTime * _damage;
+            EnemyHealth enemyHealth = other.GetComponent<EnemyHealth>();
+            if(enemyHealth != null)
+            {
+                enemyHealth._health -= Time.deltaTime * _damage;
+            }
+            
         }
     }
 }

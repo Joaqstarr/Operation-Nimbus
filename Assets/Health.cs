@@ -28,6 +28,7 @@ public class Health : MonoBehaviour
     }
     public void Damage()
     {
+        if (_hp <= 0) return;
         bool isPicked = false;
         TubeScript pickedTube = null;
         while (!isPicked)

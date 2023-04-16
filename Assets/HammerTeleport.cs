@@ -21,5 +21,6 @@ public class HammerTeleport : MonoBehaviour
         gameObject.transform.position = _resetPos.position;
         _rb.velocity = Vector3.zero;
         transform.eulerAngles = _resetPos.eulerAngles;
+        _rb.angularVelocity = Vector3.zero;
     }
 }

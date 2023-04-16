@@ -28,10 +28,12 @@ public class EnemyHealth : MonoBehaviour
         if(_health < 0)
         {
             GetComponent<EnemyPathfinding>().enabled = false;
-            GetComponent<Rigidbody>().AddForce(new Vector3(1, 4, 5), ForceMode.Impulse);
-            GetComponent<Rigidbody>().AddTorque(new Vector3(190, -50, 30), ForceMode.Force);
+            GetComponent<Rigidbody>().AddForce(new Vector3(1, -4, 0), ForceMode.Impulse);
+            GetComponent<Rigidbody>().AddTorque(new Vector3(-30, 0, 50), ForceMode.Impulse);
             GetComponent<Rigidbody>().useGravity = true;
+            GetComponent<AudioSource>().Play();
             Destroy(gameObject, 3);
+           // GetComponent<CapsuleCollider>().enabled = false;
             Destroy(this);
         }
 
